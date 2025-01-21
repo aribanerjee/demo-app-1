@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Dependabot updates
-        uses: aribanerjee/Dependabot-manager@v1.0.1
+        uses: aribanerjee/Dependabot-manager@v1.0.2
         with:
           package-ecosystem: 'npm'

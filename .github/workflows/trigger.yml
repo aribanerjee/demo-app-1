@@ -1,4 +1,4 @@
-name: Dependabot updates
+name: Dependabot manager
 
 on:
   workflow_dispatch:

@@ -4,4 +4,4 @@ updates:
   directory: '/'
   schedule:
     push:
-    interval: 'daily'
+    interval: 'weekly'

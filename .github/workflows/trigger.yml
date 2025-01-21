@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Dependabot updates
-        uses: aribanerjee/Dependabot-manager/actions/pipeline_intgration.yml
+        uses: aribanerjee/Dependabot-manager@v1.0.0
         with:
           package-ecosystem: 'npm'

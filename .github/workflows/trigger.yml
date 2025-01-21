@@ -10,6 +10,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run Dependabot updates
-        uses: aribanerjee/Dependabot-manager@v1.0.8
+        uses: aribanerjee/Dependabot-manager@v1.0.9
         with:
           package-ecosystem: 'npm'

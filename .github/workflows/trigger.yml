@@ -1,15 +1,26 @@
-name: Dependabot manager
+name: Create JIRA Ticket from Dependabot PR
 
 on:
-  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches: [main]
 
 jobs:
-  update_dependencies:
+  create-jira-ticket:
+    if: startsWith(github.event.pull_request.user.login, 'dependabot[bot]', '[bot]')
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Run Dependabot updates
-        uses: aribanerjee/Dependabot-manager@v1.0.9
+      - name: Create JIRA Ticket
+        id: create_jira_ticket
+        uses: aribanerjee/dependabot-manager/action.yml@v2
         with:
-          package-ecosystem: 'npm'
+          jira_project_key: 'FCCSEU'
+        env:
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      - name: Custom Action outputs
+        run: |
+          echo "Created JIRA issue with key: ${{ steps.create_jira_ticket.outputs.issue_key }}"
+          echo "Issue URL: ${{ steps.create_jira_ticket.outputs.issue_url }}"
